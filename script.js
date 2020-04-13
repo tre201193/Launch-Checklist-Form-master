@@ -28,7 +28,7 @@ window.addEventListener("load", function() {
          alert("Please enter all information");
          event.preventDefault();
       } else if (isNaN(pilotInput.value) === false || isNaN(copilotInput.value) === false) {
-         alert("Please enter a name for pilot name or Co-pilot Name");
+         alert("Please enter a name for pilot name and Co-pilot Name");
          event.preventDefault();
       } else if (isNaN(fuelLevelInput.value) === true || isNaN(cargoMassInput.value) === true) {
          alert("Please enter a number for fuel level and cargo mass");
