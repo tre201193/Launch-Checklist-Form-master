@@ -16,7 +16,34 @@ window.addEventListener("load", function() {
       } else if (isNaN(fuelLevelInput.value) === true || isNaN(cargoMassInput.value) === true) {
          alert("Please enter a number for fuel level and cargo mass");
          event.preventDefault();
+      } else {
+         document.getElementById("pilotStatus").innerHTML = "Pilot " + pilotInput.value + " Ready";
+         document.getElementById("copilotStatus").innerHTML = "Co-pilot " + copilotInput.value + " Ready";
+         if (fuelLevelInput.value <= 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+            document.getElementById("launchStatus").style.color = "red";
+            document.getElementById("fuelStatus").innerHTML = "Fuel too low for takeoff";
+         } else {
+            document.getElementById("fuelStatus").innerHTML = "Fuel level is ready for takeoff";
+         }
+         if (cargoMassInput.value >= 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+            document.getElementById("launchStatus").style.color = "red";
+            document.getElementById("cargoStatus").innerHTML = "Cargo mass too high for takeoff";
+         } else {
+            document.getElementById("cargoStatus").innerHTML = "Cargo mass is low enough for takeoff";
+         }
+         if (cargoMassInput.value <= 10000 && fuelLevelInput.value >= 10000) {
+            document.getElementById("launchStatus").innerHTML = "Shuttle ready for launch";
+            document.getElementById("launchStatus").style.color = "green";
+            document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+            document.getElementById("faultyItems").style.visibility = "hidden";
+         }
+         event.preventDefault();
       }
+
    });
 });
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
